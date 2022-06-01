@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #dfdfdf;
+  padding: 20px;
+}
+
+.red {
+  color: red;
+}
+
+.container {
+  display: flex;
+}
+
+.required {
+  color: #ca2e55;
+}
+
+.box {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+.text-right {
+  text-align: right;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
