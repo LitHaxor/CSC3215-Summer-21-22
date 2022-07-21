@@ -1,8 +1,11 @@
 <?php
-    require_once (__DIR__ . "../model/product.model.php");
+    require_once (__DIR__ . "/../model/product.model.php");
 
     class ProductController
     {
+
+
+
         public function insertOne($name, $buy_price, $sell_price): void
         {
             $product = new ProductModel();
