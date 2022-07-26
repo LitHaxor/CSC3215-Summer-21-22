@@ -4,8 +4,6 @@
     class ProductController
     {
 
-
-
         public function insertOne($name, $buy_price, $sell_price): void
         {
             $product = new ProductModel();
