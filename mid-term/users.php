@@ -7,13 +7,16 @@
 
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css" integrity="sha256-o+AsfCHj7A1M5Xgm1kJmZiGEIvMQEzQqrXz2072Gkkg=" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha256-cMPWkL3FzjuaFSfEYESYmjF25hCIL6mfRSPnW8OVvM4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css"
+        integrity="sha256-o+AsfCHj7A1M5Xgm1kJmZiGEIvMQEzQqrXz2072Gkkg=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha256-cMPWkL3FzjuaFSfEYESYmjF25hCIL6mfRSPnW8OVvM4=" crossorigin="anonymous"></script>
     <title>User Lists | ECMS</title>
 </head>
 
@@ -35,6 +38,7 @@
                 echo '<td>'.$user['dob'].'</td>';
                 echo '<td>'.$user['gender'].'</td>';
                 echo '<td>'.$user['role'].'</td>';
+                echo '<td>'.$user['createdAt'].'</td>';
                 echo '<td><a class="btn btn-warning" href="/add_user.php?username='.$user['username'].'">Edit</a></td>';
                 echo '<td><a class="btn btn-danger" href="/add_user.php?username='.$user['username'].'&delete=true">Delete</a></td>';
                 echo '</tr>';
@@ -59,6 +63,8 @@
                             <th scope="col">name</th>
                             <th scope="col">Date of Birth</th>
                             <th scope="col">Gender</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Created At</th>
                             <th scope="col">Edit</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -67,7 +73,7 @@
                     </thead>
                     <tbody>
 
-                    <?php echo print_users($users) ?>
+                        <?php echo print_users($users) ?>
 
                     </tbody>
                 </table>
@@ -81,4 +87,3 @@
 
 
 </html>
-

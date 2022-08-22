@@ -1,15 +1,15 @@
 <?php
 
     function load_product() {
-        if(file_exists(__DIR__ . '/../data/product.json')){
-            return json_decode(file_get_contents(__DIR__ . '/../data/product.json'), true);
+        if(file_exists(__DIR__ . '/../data/products.json')){
+            return json_decode(file_get_contents(__DIR__ . '/../data/products.json'), true);
         }
     }
 
     function save_product($product) {
         $products = load_product();
         $products[] = $product;
-        return file_put_contents(__DIR__ . '/../data/product.json', json_encode($products));
+        return file_put_contents(__DIR__ . '/../data/products.json', json_encode($products));
     }
 
     function get_product($id) {

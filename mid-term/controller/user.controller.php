@@ -32,7 +32,6 @@
         $user = create_user($username, $password, $dob, $gender, $email, $name);
 
         if($user){
-            $_SESSION['username'] = $username;
             return true;
         }
 
@@ -41,6 +40,18 @@
 
     function get_users(){
         return load_user();
+    }
+
+    function delete_user($username) {
+        $users = load_user();
+        
+        foreach($users as $key => $user) {
+            if($user['username'] == $username) {
+             unset($users[$key]);
+            }
+         }
+
+        store_user($users);
     }
 
 ?>

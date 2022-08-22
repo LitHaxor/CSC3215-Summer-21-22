@@ -11,6 +11,10 @@
         return file_put_contents(__DIR__ . '/../data/user.json', json_encode($users));
     }
 
+    function store_user($users) {
+        return file_put_contents(__DIR__ . '/../data/user.json', json_encode($users));
+    }
+
 
     function get_user($username) {
         $users = load_user();
@@ -45,11 +49,11 @@
             "username" => $username,
             "password" => $password,
             "dob"      => $dob,
-            "gender"   => $gender,
+            "gender"   => $gender || "unspecified",
             "email"    => $email,
             "name"     => $name,
-            "type"     => "User",
-            "createdAt" => Date()
+            "role"     => "User",
+            "createdAt" =>  date("Y/m/d")
         );
 
         return save_user($user);

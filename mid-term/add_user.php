@@ -26,8 +26,8 @@
         if (isset($_GET['delete']) && $_GET['delete'] == 'true') {
             $username = $_GET['username'];
             delete_user($username);
-            header("Location: /user.php");
-        }
+            header("Location: users.php");
+        } 
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -88,10 +88,12 @@
 
 
 
-        if(register_user($username, $email, $password, $dob, $gender, $name)){
-            header("Location: index.php");
-        }else {
-            $registerErr = "User Already exists!";
+        if(empty($usernameErr) && empty($passwordErr) && empty($nameErr) && empty($emailErr)) {
+            if(register_user($username, $email, $password, $dob, $gender, $name)){
+                header("Location: users.php");
+            }else {
+                $registerErr = "User Already exists!";
+            }
         }
 
     }
@@ -116,20 +118,24 @@
 
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css" integrity="sha256-o+AsfCHj7A1M5Xgm1kJmZiGEIvMQEzQqrXz2072Gkkg=" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha256-cMPWkL3FzjuaFSfEYESYmjF25hCIL6mfRSPnW8OVvM4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.css"
+        integrity="sha256-o+AsfCHj7A1M5Xgm1kJmZiGEIvMQEzQqrXz2072Gkkg=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha256-cMPWkL3FzjuaFSfEYESYmjF25hCIL6mfRSPnW8OVvM4=" crossorigin="anonymous"></script>
     <title>ECMS | Register</title>
 </head>
+
 <body>
     <?php
         include 'navbar.php';
     ?>
-    <div class="row" style="height: 100vh" >
+    <div class="row" style="height: 100vh">
         <?php
             include 'side_nav.php';
         ?>
@@ -145,30 +151,42 @@
                 <form action="/add_user.php" method="post">
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" value="<?php echo $username; ?>">
+                        <input type="text" class="form-control" id="username" name="username"
+                            placeholder="Enter username" value="<?php echo $username; ?>">
+                        <small class="text-danger"><?php echo $usernameErr; ?></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter name"
+                            value="<?php echo $username; ?>">
                         <small class="text-danger"><?php echo $usernameErr; ?></small>
                     </div>
 
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" value="<?php echo $email; ?>">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"
+                            value="<?php echo $email; ?>">
                         <small class="text-danger"><?php echo $emailErr; ?></small>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter password">
                         <small class="text-danger"><?php echo $passwordErr; ?></small>
                     </div>
 
                     <div class="form-group">
                         <label for="confirm_password">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm password" >
+                        <input type="password" class="form-control" id="confirm_password" name="confirm_password"
+                            placeholder="Confirm password">
                     </div>
 
                     <div class="form-group">
                         <label for="dob">Date of Birth</label>
-                        <input type="date" class="form-control" id="dob" name="dob" placeholder="Enter date of birth" value="<?php echo $dob; ?>">
+                        <input type="date" class="form-control" id="dob" name="dob" placeholder="Enter date of birth"
+                            value="<?php echo $dob; ?>">
                         <small class="text-danger"><?php echo $dobErr; ?></small>
                     </div>
 
@@ -189,4 +207,5 @@
 
 
 </body>
+
 </html>
